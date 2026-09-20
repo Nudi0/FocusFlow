@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Certificate of Achievement</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Noto+Naskh+Arabic:wght@400;500;700&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --paper: #f4f2ee;
+        --ink: #1b3948;
+        --blue: #0b6c94;
+        --orange: #e68c38;
+        --line: #1a3b4d;
+        --red: #d12031;
+      }
+
+      * { box-sizing: border-box; }
+      html, body { margin: 0; height: 100%; }
+
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #dfe2e2;
+        font-family: "Cinzel", serif;
+        color: var(--ink);
+      }
+
+      .certificate {
+        position: relative;
+        width: min(97vw, 1400px);
+        height: min(86vh, 850px);
+        background: var(--paper);
+        overflow: hidden;
+        border: 2px solid rgba(30,55,65,0.8);
+      }
+
+      .certificate svg {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        display: block;
+        pointer-events: none;
+      }
+
+      .brand {
+        position: absolute;
+        top: 26px;
+        right: 34px;
+        z-index: 2;
+        color: var(--blue);
+      }
+
+      .brand-wrap {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .brand .arabic {
+        font-family: "Noto Naskh Arabic", serif;
+        font-size: 32px;
+        line-height: 1;
+        font-weight: 700;
+      }
+
+      .brand .english {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        font-size: 35px;
+        line-height: 1;
+        letter-spacing: 0.03em;
+        font-weight: 700;
+        text-transform: uppercase;
+      }
+
+      .brand .english small {
+        font-size: 15px;
+        letter-spacing: 0.18em;
+        margin-top: 2px;
+      }
+
+      .content {
+        position: relative;
+        z-index: 2;
+        width: 100%;
+        height: 100%;
+        padding: 72px 80px 30px;
+        text-align: center;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(31px, 2.95vw, 65px);
+        font-weight: 700;
+        letter-spacing: 0.02em;
+        line-height: 1.2;
+        color: var(--ink);
+        text-transform: uppercase;
+      }
+
+      .title-ar {
+        margin-top: 10px;
+        font-family: "Noto Naskh Arabic", serif;
+        font-size: clamp(28px, 2.4vw, 48px);
+        direction: rtl;
+        color: var(--ink);
+        line-height: 1.5;
+      }
+
+      .lead {
+        margin-top: 26px;
+        font-size: clamp(21px, 1.7vw, 33px);
+        font-style: italic;
+        color: var(--ink);
+      }
+
+      .lead-ar {
+        margin-top: 8px;
+        font-family: "Noto Naskh Arabic", serif;
+        font-size: clamp(24px, 1.8vw, 36px);
+        direction: rtl;
+        color: var(--ink);
+      }
+
+      .username {
+        margin-top: 22px;
+        font-size: clamp(44px, 3.9vw, 76px);
+        line-height: 1;
+        font-weight: 600;
+        letter-spacing: -0.07em;
+        color: var(--ink);
+      }
+
+      .divider {
+        position: relative;
+        width: min(66%, 820px);
+        height: 18px;
+        margin: 12px auto 0;
+      }
+
+      .divider::before,
+      .divider::after {
+        content: "";
+        position: absolute;
+        top: 7px;
+        width: calc(50% - 26px);
+        height: 2px;
+        background: var(--line);
+      }
+
+      .divider::before { left: 0; }
+      .divider::after { right: 0; }
+
+      .divider span {
+        position: absolute;
+        left: 50%;
+        top: 0;
+        width: 14px;
+        height: 14px;
+        transform: translateX(-50%) rotate(45deg);
+        background: var(--red);
+        border: 2px solid rgba(196, 28, 48, 0.75);
+      }
+
+      .course {
+        margin: 28px auto 0;
+        width: min(90%, 1170px);
+        font-size: clamp(16px, 1.45vw, 27px);
+        line-height: 1.6;
+        color: var(--ink);
+        font-style: italic;
+      }
+
+      .course-ar {
+        margin-top: 8px;
+        font-family: "Noto Naskh Arabic", serif;
+        font-size: clamp(18px, 1.6vw, 28px);
+        direction: rtl;
+        color: var(--ink);
+      }
+
+      .signatures {
+        margin-top: 42px;
+        display: grid;
+        grid-template-columns: 1fr 200px 1fr;
+        gap: 12px;
+        align-items: end;
+      }
+
+      .signature {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 126px;
+      }
+
+      .signature .line {
+        width: 100%;
+        border-top: 2px solid var(--line);
+        position: relative;
+        padding-top: 18px;
+        text-align: center;
+      }
+
+      .signature .line span {
+        display: inline-block;
+        position: relative;
+        top: 10px;
+        background: var(--paper);
+        padding: 0 12px;
+        font-size: clamp(17px, 1.4vw, 28px);
+        color: var(--ink);
+      }
+
+      .seal {
+        width: 155px;
+        height: 155px;
+        border-radius: 50%;
+        position: relative;
+        margin: 0 auto;
+        border: 7px solid var(--orange);
+        background: rgba(230, 140, 56, 0.08);
+        transform: rotate(-10deg);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .seal::before {
+        content: "";
+        position: absolute;
+        inset: 18px;
+        border-radius: 50%;
+        border: 2px solid rgba(214, 116, 42, 0.8);
+      }
+
+      .seal::after {
+        content: "";
+        position: absolute;
+        inset: -8px;
+        border-radius: 50%;
+        background: conic-gradient(
+          from 0deg,
+          transparent 0 11deg, rgba(205,114,43,0.8) 11deg 20deg, transparent 20deg 31deg,
+          rgba(205,114,43,0.8) 31deg 40deg, transparent 40deg 51deg, rgba(205,114,43,0.8) 51deg 60deg,
+          transparent 60deg 71deg, rgba(205,114,43,0.8) 71deg 80deg, transparent 80deg 91deg,
+          rgba(205,114,43,0.8) 91deg 100deg, transparent 100deg 111deg, rgba(205,114,43,0.8) 111deg 120deg,
+          transparent 120deg 131deg, rgba(205,114,43,0.8) 131deg 140deg, transparent 140deg 151deg,
+          rgba(205,114,43,0.8) 151deg 160deg, transparent 160deg 171deg, rgba(205,114,43,0.8) 171deg 180deg,
+          transparent 180deg 191deg, rgba(205,114,43,0.8) 191deg 200deg, transparent 200deg 211deg,
+          rgba(205,114,43,0.8) 211deg 220deg, transparent 220deg 231deg, rgba(205,114,43,0.8) 231deg 240deg,
+          transparent 240deg 251deg, rgba(205,114,43,0.8) 251deg 260deg, transparent 260deg 271deg,
+          rgba(205,114,43,0.8) 271deg 280deg, transparent 280deg 291deg, rgba(205,114,43,0.8) 291deg 300deg,
+          transparent 300deg 311deg, rgba(205,114,43,0.8) 311deg 320deg, transparent 320deg 331deg,
+          rgba(205,114,43,0.8) 331deg 340deg, transparent 340deg 351deg, rgba(205,114,43,0.8) 351deg 360deg
+        );
+        opacity: 0.9;
+      }
+
+      .seal-inner {
+        position: relative;
+        z-index: 1;
+        text-align: center;
+        color: var(--orange);
+        font-weight: 700;
+      }
+
+      .seal-inner .seal-main {
+        display: block;
+        font-size: 29px;
+        line-height: 1.1;
+      }
+
+      .seal-inner .seal-sub {
+        display: block;
+        font-size: 19px;
+        letter-spacing: 0.08em;
+      }
+
+      .cert-no {
+        margin-top: 12px;
+        font-size: clamp(18px, 1.4vw, 27px);
+        font-style: italic;
+        color: var(--ink);
+      }
+
+      @media (max-width: 980px) {
+        .content { padding: 54px 28px 26px; }
+        .signatures { grid-template-columns: 1fr; gap: 18px; }
+        .seal { order: -1; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="certificate">
+      <svg viewBox="0 0 1400 850" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M-40 150 C 110 90, 200 55, 420 45 C 620 35, 820 85, 980 110 C 1115 132, 1265 110, 1460 92 L 1460 0 L -40 0 Z" fill="#0b6c94" opacity="0.95"/>
+        <path d="M-40 178 C 120 205, 215 200, 380 146 C 560 88, 820 150, 1030 165 C 1220 180, 1330 160, 1460 130 L 1460 0 L -40 0 Z" fill="#eb8c35" opacity="0.88"/>
+        <path d="M-40 210 C 150 210, 300 230, 470 250 C 750 280, 1050 300, 1360 250 L 1440 250 L 1440 320 L -40 320 Z" fill="#0b6c94" opacity="0.9"/>
+      </svg>
+
+      <div class="brand" aria-label="SISCO Learning">
+        <div class="brand-wrap">
+          <div class="arabic">سيسكو</div>
+          <div class="english">SISCO<small>Learning</small></div>
+        </div>
+      </div>
+
+      <div class="content">
+        <h1>CERTIFICATE OF ACHIEVEMENT</h1>
+        <div class="title-ar">شهادة تقدير لدورة تدريبية</div>
+
+        <div class="lead">This certificate is proudly presented to:</div>
+        <div class="lead-ar">تم منح هذه الشهادة بكل فخر إلى</div>
+
+        <div class="username">&lt;&lt;username&gt;&gt;</div>
+
+        <div class="divider" aria-hidden="true"><span></span></div>
+
+        <div class="course">
+          for successfully completing the course &ldquo;&lt;&lt;Course Name&gt;&gt;&rdquo;, including all mandatory lessons, as part of the SISCO Learning &amp; Development Program.
+        </div>
+        <div class="course-ar">
+          لإتمام ناجح لدورة تدريبية «&lt;&lt;Course Name&gt;&gt;»، متضمنة جميع الدروس الإجبارية، ضمن برنامج سيسكو للتعلم والتطوير.
+        </div>
+
+        <div class="signatures">
+          <div class="signature">
+            <div class="line"><span>&lt;&lt;name&gt;&gt; — HR &amp; Training Manager</span></div>
+          </div>
+
+          <div class="seal" aria-label="SISCO Learning seal">
+            <div class="seal-inner">
+              <span class="seal-main">SISCO</span>
+              <span class="seal-sub">LEARNING</span>
+            </div>
+          </div>
+
+          <div class="signature">
+            <div class="line"><span>&lt;&lt;name&gt;&gt; — Course Instructor</span></div>
+          </div>
+        </div>
+
+        <div class="cert-no">Certificate No &lt;&lt;123&gt;&gt;</div>
+      </div>
+    </div>
+  </body>
+</html>
