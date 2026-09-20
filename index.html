@@ -26,7 +26,7 @@
       --text-subtle: #b8709e;
 
       --primary: #ff4d94; /* Radiant Gamer Pink */
-      --primary-hover: #e02874;
+      --primary-hover: #a21355; /* Deep Velvet Rose for WCAG AA contrast */
       --primary-light: #fdf2f8;
       --primary-border: #f9a8d4;
 
@@ -39,7 +39,7 @@
       --success-light: #ecfdf5;
       --warning: #f59e0b;
       --warning-light: #fffbeb;
-      --danger: #f43f5e;
+      --danger: #be123c;
       --danger-light: #fff1f2;
       --info: #ec4899;
       --info-light: #fdf2f8;
@@ -52,10 +52,10 @@
       --radius-lg: 18px;
       --radius-pill: 999px;
 
-      --shadow-sm: 0 2px 6px rgba(255, 77, 148, 0.08);
-      --shadow-md: 0 6px 18px rgba(255, 77, 148, 0.12);
-      --shadow-lg: 0 12px 30px rgba(255, 77, 148, 0.16);
-      --gamer-glow: 0 0 16px rgba(255, 77, 148, 0.35);
+      --shadow-sm: 0 1px 3px rgba(74, 21, 75, 0.05), 0 1px 2px rgba(74, 21, 75, 0.03);
+      --shadow-md: 0 4px 14px -2px rgba(74, 21, 75, 0.08), 0 2px 6px -1px rgba(74, 21, 75, 0.04);
+      --shadow-lg: 0 10px 22px -4px rgba(74, 21, 75, 0.10), 0 4px 8px -2px rgba(74, 21, 75, 0.05);
+      --gamer-glow: 0 4px 14px -1px rgba(255, 77, 148, 0.28);
     }
 
     body.dark {
@@ -90,13 +90,27 @@
       --info: #f472b6;
       --info-light: rgba(244, 114, 182, 0.18);
 
-      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.5);
-      --shadow-md: 0 6px 20px rgba(0, 0, 0, 0.55);
-      --shadow-lg: 0 14px 30px rgba(0, 0, 0, 0.65);
-      --gamer-glow: 0 0 20px rgba(255, 77, 148, 0.5);
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.35);
+      --shadow-md: 0 4px 14px -2px rgba(0, 0, 0, 0.45);
+      --shadow-lg: 0 10px 22px -4px rgba(0, 0, 0, 0.55);
+      --gamer-glow: 0 4px 16px -1px rgba(255, 77, 148, 0.35);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    ::selection {
+      background: var(--subtle);
+      color: var(--primary);
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--primary);
+      outline-offset: 2px;
+    }
+
+    table {
+      font-variant-numeric: tabular-nums;
+    }
 
     /* Custom Girly Pastel Scrollbar */
     ::-webkit-scrollbar { width: 8px; height: 8px; }
@@ -108,8 +122,8 @@
       background-color: var(--bg);
       color: var(--text);
       font-family: var(--font-main);
-      font-size: 0.9rem;
-      line-height: 1.5;
+      font-size: 0.92rem;
+      line-height: 1.55;
       min-height: 100vh;
       display: flex;
       transition: background-color 0.25s ease, color 0.25s ease;
@@ -142,7 +156,6 @@
       height: 100vh;
       position: sticky;
       top: 0;
-      transition: width 0.2s ease;
       z-index: 50;
       box-shadow: 2px 0 10px rgba(255, 77, 148, 0.04);
     }
@@ -183,7 +196,7 @@
     }
 
     .brand-tag {
-      font-size: 0.68rem;
+      font-size: 0.76rem;
       font-weight: 700;
       color: var(--primary);
       text-transform: uppercase;
@@ -191,7 +204,7 @@
     }
 
     .nav-section-title {
-      font-size: 0.72rem;
+      font-size: 0.76rem;
       font-weight: 700;
       color: var(--text-subtle);
       text-transform: uppercase;
@@ -230,7 +243,7 @@
     }
 
     .nav-link:hover {
-      color: var(--primary);
+      color: var(--primary-hover);
       background: var(--subtle);
       transform: translateX(2px);
     }
@@ -244,7 +257,7 @@
 
     .nav-badge {
       margin-left: auto;
-      font-size: 0.72rem;
+      font-size: 0.78rem;
       font-weight: 700;
       padding: 2px 8px;
       border-radius: var(--radius-pill);
@@ -318,7 +331,7 @@
     }
 
     .user-role {
-      font-size: 0.72rem;
+      font-size: 0.78rem;
       color: var(--text-muted);
     }
 
@@ -375,7 +388,7 @@
     }
 
     .icon-btn:hover {
-      color: var(--primary);
+      color: var(--primary-hover);
       border-color: var(--border-focus);
       background: var(--subtle);
       box-shadow: var(--gamer-glow);
@@ -396,7 +409,7 @@
     }
 
     .btn-primary:hover {
-      background: linear-gradient(135deg, var(--primary-hover) 0%, #e01768 100%);
+      background: linear-gradient(135deg, var(--primary-hover) 0%, #a21355 100%);
       box-shadow: 0 4px 16px rgba(255, 77, 148, 0.5);
       transform: translateY(-1px);
     }
@@ -418,7 +431,7 @@
     .btn-secondary:hover {
       background: var(--subtle);
       border-color: var(--border-focus);
-      color: var(--primary);
+      color: var(--primary-hover);
     }
 
     /* Dropdown */
@@ -441,7 +454,7 @@
     .dropdown-wrap.active .dropdown-menu { display: flex; }
     .dropdown-header {
       padding: 6px 10px 4px;
-      font-size: 0.72rem;
+      font-size: 0.78rem;
       font-weight: 700;
       color: var(--text-subtle);
       text-transform: uppercase;
@@ -461,7 +474,7 @@
     }
     .dropdown-item:hover {
       background: var(--subtle);
-      color: var(--primary);
+      color: var(--primary-hover);
     }
 
     /* ==========================================================================
@@ -511,7 +524,7 @@
     }
 
     .status-info-label {
-      font-size: 0.72rem;
+      font-size: 0.78rem;
       color: var(--text-muted);
       text-transform: uppercase;
       letter-spacing: 0.06em;
@@ -602,7 +615,7 @@
     .preset-btn {
       padding: 4px 8px;
       border-radius: var(--radius-pill);
-      font-size: 0.72rem;
+      font-size: 0.78rem;
       font-weight: 600;
       color: var(--text-muted);
       background: var(--card);
@@ -610,7 +623,7 @@
     }
 
     .preset-btn:hover {
-      color: var(--primary);
+      color: var(--primary-hover);
       border-color: var(--border-focus);
     }
 
@@ -693,7 +706,7 @@
     }
 
     .card-change {
-      font-size: 0.74rem;
+      font-size: 0.78rem;
       font-weight: 600;
       color: var(--text-muted);
       display: flex;
@@ -754,7 +767,7 @@
       outline: none;
       border-color: var(--primary);
       background: var(--card);
-      box-shadow: 0 0 10px rgba(255, 77, 148, 0.2);
+      box-shadow: 0 0 0 3px rgba(255, 77, 148, 0.18);
     }
 
     .quick-category-select {
@@ -897,22 +910,22 @@
 
     .activity-time {
       font-family: var(--font-mono);
-      font-size: 0.72rem;
+      font-size: 0.78rem;
       color: var(--text-muted);
     }
 
     .activity-text {
-      font-size: 0.84rem;
+      font-size: 0.88rem;
       color: var(--text);
       font-weight: 600;
-      line-height: 1.4;
+      line-height: 1.45;
     }
 
     .empty-state {
       text-align: center;
       padding: 36px 16px;
       color: var(--text-muted);
-      font-size: 0.85rem;
+      font-size: 0.88rem;
     }
 
     /* ==========================================================================
@@ -936,7 +949,7 @@
     .filter-tab {
       padding: 6px 16px;
       border-radius: var(--radius-pill);
-      font-size: 0.8rem;
+      font-size: 0.82rem;
       font-weight: 600;
       color: var(--text-muted);
       background: var(--card);
@@ -945,7 +958,7 @@
     }
 
     .filter-tab:hover {
-      color: var(--primary);
+      color: var(--primary-hover);
       border-color: var(--border-focus);
     }
 
@@ -960,14 +973,14 @@
       width: 100%;
       border-collapse: collapse;
       text-align: left;
-      font-size: 0.85rem;
+      font-size: 0.88rem;
     }
 
     .data-table th {
       padding: 10px 14px;
       color: var(--text-muted);
       font-weight: 700;
-      font-size: 0.74rem;
+      font-size: 0.78rem;
       text-transform: uppercase;
       letter-spacing: 0.06em;
       border-bottom: 1px solid var(--border);
@@ -989,16 +1002,15 @@
       padding: 8px 16px;
       font-size: 0.84rem;
       color: var(--text);
-      width: 220px;
-      transition: all 0.15s ease;
+      width: 230px;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
     }
 
     .search-input:focus {
       outline: none;
       border-color: var(--primary);
       background: var(--card);
-      width: 250px;
-      box-shadow: 0 0 10px rgba(255, 77, 148, 0.2);
+      box-shadow: 0 0 0 3px rgba(255, 77, 148, 0.18);
     }
 
     .switch-row {
@@ -1091,7 +1103,7 @@
       outline: none;
       border-color: var(--primary);
       background: var(--card);
-      box-shadow: 0 0 10px rgba(255, 77, 148, 0.2);
+      box-shadow: 0 0 0 3px rgba(255, 77, 148, 0.18);
     }
 
     .form-actions {
@@ -1234,21 +1246,21 @@
               <span>📊</span>
               <div>
                 <strong>Excel Sheet (.xls)</strong>
-                <div style="font-size: 0.72rem; color: var(--text-muted);">Personal tasks &amp; activity timeline</div>
+                <div style="font-size: 0.78rem; color: var(--text-muted);">Personal tasks &amp; activity timeline</div>
               </div>
             </button>
             <button class="dropdown-item" id="exportWordBtn">
               <span>📄</span>
               <div>
                 <strong>Word Document (.doc)</strong>
-                <div style="font-size: 0.72rem; color: var(--text-muted);">Cute formatted summary briefing</div>
+                <div style="font-size: 0.78rem; color: var(--text-muted);">Cute formatted summary briefing</div>
               </div>
             </button>
             <button class="dropdown-item" id="exportCsvBtn">
               <span>📋</span>
               <div>
                 <strong>Plain CSV (.csv)</strong>
-                <div style="font-size: 0.72rem; color: var(--text-muted);">Raw backup data</div>
+                <div style="font-size: 0.78rem; color: var(--text-muted);">Raw backup data</div>
               </div>
             </button>
           </div>
@@ -1362,24 +1374,24 @@
 
         <div class="iphone-grid">
           <div style="background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 12px 14px;">
-            <div style="font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700; margin-bottom: 4px;">Screen Time</div>
+            <div style="font-size: 0.78rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700; margin-bottom: 4px;">Screen Time</div>
             <div style="font-size: 1.25rem; font-weight: 800; color: var(--text);" id="valScreenTime">2h 14m</div>
-            <div style="font-size: 0.72rem; color: var(--success); font-weight: 600;" id="subScreenTime">↓ Within 3h daily target</div>
+            <div style="font-size: 0.78rem; color: var(--success); font-weight: 600;" id="subScreenTime">↓ Within 3h daily target</div>
           </div>
           <div style="background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 12px 14px;">
-            <div style="font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700; margin-bottom: 4px;">Daily Steps</div>
+            <div style="font-size: 0.78rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700; margin-bottom: 4px;">Daily Steps</div>
             <div style="font-size: 1.25rem; font-weight: 800; color: var(--primary);" id="valSteps">8,420</div>
-            <div style="font-size: 0.72rem; color: var(--text-muted); font-weight: 600;">Goal: 10,000 steps (84%)</div>
+            <div style="font-size: 0.78rem; color: var(--text-muted); font-weight: 600;">Goal: 10,000 steps (84%)</div>
           </div>
           <div style="background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 12px 14px;">
-            <div style="font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700; margin-bottom: 4px;">Workouts &amp; Cardio</div>
+            <div style="font-size: 0.78rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700; margin-bottom: 4px;">Workouts &amp; Cardio</div>
             <div style="font-size: 1.25rem; font-weight: 800; color: var(--success);" id="valWorkout">45m Cardio</div>
-            <div style="font-size: 0.72rem; color: var(--text-muted); font-weight: 600;">Apple Watch tracked</div>
+            <div style="font-size: 0.78rem; color: var(--text-muted); font-weight: 600;">Apple Watch tracked</div>
           </div>
           <div style="background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 12px 14px;">
-            <div style="font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700; margin-bottom: 4px;">Sleep Duration</div>
+            <div style="font-size: 0.78rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700; margin-bottom: 4px;">Sleep Duration</div>
             <div style="font-size: 1.25rem; font-weight: 800; color: var(--accent);" id="valSleep">7.5 hrs</div>
-            <div style="font-size: 0.72rem; color: var(--text-muted); font-weight: 600;">Optimal recovery</div>
+            <div style="font-size: 0.78rem; color: var(--text-muted); font-weight: 600;">Optimal recovery</div>
           </div>
         </div>
       </div>
@@ -1750,10 +1762,10 @@
         <div class="form-group">
           <label>Your Personal Sync URL</label>
           <div style="display: flex; gap: 8px;">
-            <input type="text" id="personalSyncUrlInput" class="form-input" readonly style="font-family: var(--font-mono); font-size: 0.74rem;">
+            <input type="text" id="personalSyncUrlInput" class="form-input" readonly style="font-family: var(--font-mono); font-size: 0.78rem;">
             <button class="btn-secondary" id="copySyncUrlBtn" style="white-space: nowrap; font-size: 0.78rem;">Copy Link</button>
           </div>
-          <span style="font-size: 0.72rem; color: var(--primary); font-weight: 700; display: none; margin-top: 4px;" id="copySuccessMsg">✓ Link copied to clipboard!</span>
+          <span style="font-size: 0.78rem; color: var(--primary); font-weight: 700; display: none; margin-top: 4px;" id="copySuccessMsg">✓ Link copied to clipboard!</span>
         </div>
         <p style="font-size: 0.76rem; color: var(--text-muted); margin-top: 10px;">
           💡 When this link opens on your iPhone, FocusFlow instantly records your Apple Health stats, updates your momentum score, and logs an event in your Daily Activity Feed.
@@ -2466,7 +2478,7 @@
               '<div class="task-meta">' +
                 '<span class="badge ' + getCategoryBadgeClass(task.category) + '">' + escapeHtml(task.category) + '</span>' +
                 '<span class="badge ' + getPriorityBadgeClass(task.priority) + '">' + escapeHtml(task.priority) + '</span>' +
-                '<span style="font-size: 0.72rem; color: var(--text-muted);">' + escapeHtml(task.due || 'Today') + '</span>' +
+                '<span style="font-size: 0.78rem; color: var(--text-muted);">' + escapeHtml(task.due || 'Today') + '</span>' +
               '</div>' +
             '</div>' +
             '<button class="btn-delete-task" data-delete-id="' + task.id + '" title="Delete quest">' +
@@ -2501,7 +2513,7 @@
             '<div class="activity-dot ' + escapeHtml(act.type || 'manual') + '"></div>' +
             '<div class="activity-header">' +
               '<span class="activity-time">' + escapeHtml(act.time) + '</span>' +
-              '<span class="badge ' + getCategoryBadgeClass(act.category) + '" style="font-size: 0.65rem;">' + escapeHtml(act.category) + '</span>' +
+              '<span class="badge ' + getCategoryBadgeClass(act.category) + '">' + escapeHtml(act.category) + '</span>' +
             '</div>' +
             '<div class="activity-text">' + escapeHtml(act.title) + '</div>' +
           '</div>';
